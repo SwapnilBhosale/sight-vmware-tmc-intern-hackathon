@@ -13,4 +13,6 @@ Run following commands to install dependencies
 
 2) pip3 install -r requirements.txt
 
+3) python3 speech_to_text.py
+
 ```

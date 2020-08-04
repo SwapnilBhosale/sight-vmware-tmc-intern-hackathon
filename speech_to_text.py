@@ -13,23 +13,24 @@ def SpeakText(words):
     engine.say(words)  
     engine.runAndWait() 
 
-# Voice To Text
-while(1):     
-    try: 
-        with sr.Microphone() as source: 
-            # wait for a second to let the recognizer 
-            # adjust the energy threshold based on 
-            # the surrounding noise level  
-            recognizer.adjust_for_ambient_noise(source, duration=0.2) 
-            print("say something ") 
-              
-            audio = recognizer.listen(source) 
-            my_text = recognizer.recognize_google(audio)
-            print("Did you say "+ my_text.lower()) 
-              
-    except sr.RequestError as e: 
-        print("Could not request results; {0}".format(e)) 
-    except sr.UnknownValueError: 
-        print("unknown error occured") 
+if __name__ == "__main__":
+    # Voice To Text
+    while(1):     
+        try: 
+            with sr.Microphone() as source: 
+                # wait for a second to let the recognizer 
+                # adjust the energy threshold based on 
+                # the surrounding noise level  
+                recognizer.adjust_for_ambient_noise(source, duration=0.2) 
+                print("say something ") 
+                
+                audio = recognizer.listen(source) 
+                my_text = recognizer.recognize_google(audio)
+                print("Did you say "+ my_text.lower()) 
+                
+        except sr.RequestError as e: 
+            print("Could not request results; {0}".format(e)) 
+        except sr.UnknownValueError: 
+            print("unknown error occured") 
 
 
