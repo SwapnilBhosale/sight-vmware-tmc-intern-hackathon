@@ -16,3 +16,15 @@ Run following commands to install dependencies
 3) python3 speech_to_text.py
 
 ```
+
+
+### Image detenction
+
+Run following commands to install dependencies
+
+```
+1) wget https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo.h5
+
+2) python3 image_detection_yolo.py
+
+```
