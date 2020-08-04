@@ -1,14 +1,20 @@
 
 
+import image_detection_yolo
 import speech_to_text
 
 
 def brain(data):
 
-
-    if "you see" in data:
+    if data and ("what is this" in data or "what is" in data or "do you see" in data):
+        speech_to_text.SpeakText("Let me see")
         statement = image_process("./current_image.jpg")
-        #speack here
+        speech_to_text.SpeakText(statement)
+    elif data and ("describe" in data or "descibe surrounding" in data):
+        #Here let's integrate the desctibe call
+        pass
+    else:
+        speech_to_text.SpeakText("Sorry! I don't understand")
 
 def image_process(image):
     

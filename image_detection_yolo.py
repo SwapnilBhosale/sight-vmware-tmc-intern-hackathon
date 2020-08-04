@@ -5,7 +5,7 @@ import cv2
 import numpy as np
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--webcam', help="True/False", default=False)
+parser.add_argument('--webcam', help="True/False", default=True)
 parser.add_argument('--play_video', help="Tue/False", default=False)
 parser.add_argument('--image', help="Tue/False", default=False)
 parser.add_argument('--video_path', help="Path of video file", default="")
@@ -13,6 +13,7 @@ parser.add_argument(
     '--image_path', help="Path of image to detect objects", default="")
 parser.add_argument('--verbose', help="To print statements", default=True)
 args = parser.parse_args()
+
 
 
 #Load yolo
@@ -112,6 +113,11 @@ def image_detect(img_path):
         if key == 27:
             break
 
+def print_labels(classes, class_ids):
+    s = []
+    for val in class_ids:
+        s.append(classes[class_ids])
+    print("***classes found: ", ",".join(s))
 
 def webcam_detect():
     model, classes, colors, output_layers = load_yolo()
@@ -119,11 +125,18 @@ def webcam_detect():
     cap = start_webcam()
     print("after load")
     while True:
+        #read frame
         _, frame = cap.read()
         height, width, channels = frame.shape
+        #detect object
         blob, outputs = detect_objects(frame, model, output_layers)
+        #print("** outputs: ",outputs)
         boxes, confs, class_ids = get_box_dimensions(outputs, height, width)
+        print("*** confs:{} {} ".format(max(confs), classes[confs.index(max(confs))]))
+        print("***8 class_ids:  ",class_ids)
+        #print_labels(classes,class_ids)
         draw_labels(boxes, confs, colors, class_ids, classes, frame)
+        #esc key is exit key
         key = cv2.waitKey(1)
         if key == 27:
             break
@@ -143,6 +156,7 @@ def start_video(video_path):
         boxes, confs, class_ids = get_box_dimensions(outputs, height, width)
         draw_labels(boxes, confs, colors, class_ids, classes, frame)
         key = cv2.waitKey(1)
+        #esc key is exit key
         if key == 27:
             break
     cap.release()
