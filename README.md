@@ -24,13 +24,17 @@ Key features include:
 
 - ***Object Detection and Recognition***: the integrated speaker can speak what's in front of the camera via voice commands.
   
-  This module uses [Speech Recognition](https://pypi.org/project/SpeechRecognition) for speech recognition, [YOLO](https://pjreddie.com/darknet/yolo) for object detection and recognition, and [pyttsx3](https://pypi.org/project/pyttsx3) for text-to-speech conversion.
+  This module uses [YOLO](https://pjreddie.com/darknet/yolo) for object detection and recognition.
 
 - ***Image Capture and Captioning***: capture the image on camera with voice command trigger, and generate a descriptive sentence as voice output. 
-
+  
+  This module uses [DeepAI](https://deepai.org)
+  
 - ***Text Reader***: detect text present in front of camera and enable speaker to read the text for users.
 
   This module uses [Pytesseract](https://pypi.org/project/pytesseract/) for character detection and recognition.
+  
+The project uses [Speech Recognition](https://pypi.org/project/SpeechRecognition) for speech recognition and [pyttsx3](https://pypi.org/project/pyttsx3) for text-to-speech conversion.
 
 ## Prerequisites 
 
@@ -92,10 +96,15 @@ Run `main.py` and wait for modules to load. Provide the flag `--webcam N` if you
 
 - ***Text Reader***: Ask with microphone `Read it` or `Please read`.
 
+- ***Image Capture and Captioning***: Ask with microphone `Describe it` or `Describe surrounding`.
+
 ## Results
 
 - ***Object Detection and Recognition***: 
 ![Object Detection and Recognition](https://github.com/SwapnilBhosale/sight-vmware-tmc-intern-hackathon/blob/master/demo_data/object_detection.png?raw=true)
+
+- ***Image Capture and Captioning***: 
+![Image Capture and Captioning](https://github.com/SwapnilBhosale/sight-vmware-tmc-intern-hackathon/blob/master/demo_data/Image_captioning.png?raw=true)
 
 - ***Text Reader***: 
 ![Text Reader](https://github.com/SwapnilBhosale/sight-vmware-tmc-intern-hackathon/blob/master/demo_data/Text_recognition.png?raw=true)
