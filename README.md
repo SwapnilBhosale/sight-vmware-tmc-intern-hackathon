@@ -29,6 +29,7 @@ Key features include:
 - ***Image Capture and Captioning***: capture the image on camera with voice command trigger, and generate a descriptive sentence as voice output. 
 
 - ***Text Reader***: detect text present in front of camera and enable speaker to read the text for users.
+
   This module uses [Pytesseract](https://pypi.org/project/pytesseract/) for character detection and recognition.
 
 ## Prerequisites 
