@@ -85,7 +85,11 @@ Run following commands to install dependencies
 
 ## Instructions
 
-- ***Object Detection and Recognition***: Run `main.py` and wait for modules to load. Provide the flag `--webcam N` if you wish to see the demo with a preloaded video for object detection. Once loaded, it will prompt user for voice input. Ask with microphone `What do you see` or `what is this`, then wait for speaker module to generate the voice and you should be able to hear the output within a few seconds.
+Run `main.py` and wait for modules to load. Provide the flag `--webcam N` if you wish to see the demo with a preloaded video for object detection. Once loaded, it will prompt user for voice input.
+
+- ***Object Detection and Recognition***: Ask with microphone `What do you see` or `what is this`.
+
+- ***Text Reader***: Ask with microphone `Read it` or `Please read`.
 
 ## Results
 
