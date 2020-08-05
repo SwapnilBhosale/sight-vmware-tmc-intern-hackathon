@@ -1,68 +1,87 @@
-
+import subprocess
 import time
 from threading import Lock, Thread
 
 import brain
-import speak
+import cv2
+import image_detection_yolo as yolo
 import speech_recognition as sr
-import speech_to_text
+import text_to_speech
+from video_get import VideoGet
+from video_show import VideoShow
 
 
-class WebcamVideoStream :
-    def __init__(self, src = 0, width = 320, height = 240) :
-        self.stream = cv2.VideoCapture(src)
-        self.stream.set(cv2.cv.CV_CAP_PROP_FRAME_WIDTH, width)
-        self.stream.set(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT, height)
-        (self.grabbed, self.frame) = self.stream.read()
-        self.started = False
-        self.read_lock = Lock()
+class camThread(Thread):
+    def __init__(self, previewName, camID):
+        Thread.__init__(self)
+        self.previewName = previewName
+        self.camID = camID
+    def run(self):
+        print("Starting " + self.previewName)
+        camPreview(self.previewName, self.camID)
 
-    def start(self) :
-        if self.started :
-            print "already started!!"
-            return None
-        self.started = True
-        self.thread = Thread(target=self.update, args=())
-        self.thread.start()
-        return self
+def camPreview(previewName, camID):
+    cv2.namedWindow(previewName)
+    cam = cv2.VideoCapture(camID)
+    if cam.isOpened():  # try to get the first frame
+        rval, frame = cam.read()
+    else:
+        rval = False
 
-    def update(self) :
-        while self.started :
-            (grabbed, frame) = self.stream.read()
-            self.read_lock.acquire()
-            self.grabbed, self.frame = grabbed, frame
-            self.read_lock.release()
+    while rval:
 
-    def read(self) :
-        self.read_lock.acquire()
-        frame = self.frame.copy()
-        self.read_lock.release()
-        return frame
+        height, width, channels = frame.shape
+        blob, outputs = yolo.detect_objects(frame, model, output_layers)
+        boxes, confs, class_ids = yolo.get_box_dimensions(outputs, height, width)
+        yolo.draw_labels(boxes, confs, colors, class_ids, classes, frame)
+        rval, frame = cam.read()
+        key = cv2.waitKey(1)
+        if key == 27:  # exit on ESC
+            break
+    cv2.destroyWindow(previewName)
 
-    def stop(self) :
-        self.started = False
-        self.thread.join()
-
-    def __exit__(self, exc_type, exc_value, traceback) :
-        self.stream.release()
 
 def main():
-    
+
+    recognizer = sr.Recognizer() 
+    model, classes, colors, output_layers = yolo.load_yolo() 
     time.sleep(2)
-    recognizer = sr.Recognizer()  
-    while 1:
-        #get the trigger using text to speech
-        try: 
-            with sr.Microphone() as source: 
-                # wait for a second to let the recognizer 
-                # adjust the energy threshold based on 
-                # the surrounding noise level  
-                recognizer.adjust_for_ambient_noise(source, duration=0.2) 
-                audio = recognizer.listen(source) 
+    #model, classes, colors, output_layers = yolo.load_yolo()
+    #thread1 = camThread("Camera 1", 0)
+    #thread1.start()
+    subprocess.Popen(["python3", "image_detection_yolo.py"], close_fds=True)
+    #subprocess.Popen(["python3", "image_detection_yolo.py", "--webcam=False", "--video_path=/tmp/video.mp4"])
+    while True:
+        with sr.Microphone() as source:
+                # wait for a second to let the recognizer
+                # adjust the energy threshold based on
+                # the surrounding noise level
+                recognizer.adjust_for_ambient_noise(source, duration=0.2)
+                print("before listern")
+                audio = recognizer.listen(source)
+                my_text = recognizer.recognize_google(audio)
+                if len(my_text) > 0:
+                    print("** text: ",my_text)
+                    brain.brain(my_text,  model, classes, colors, output_layers)
+    
+
+    '''while 1:
+        # get the trigger using text to speech
+        try:
+            if video_getter.stopped or video_shower.stopped:
+                video_shower.stop()
+                video_getter.stop()
+                break
+            frame = video_getter.frame
+            video_shower.frame = frame
+            with sr.Microphone() as source:
+                # wait for a second to let the recognizer
+                # adjust the energy threshold based on
+                # the surrounding noise level
+                recognizer.adjust_for_ambient_noise(source, duration=0.2)
+                audio = recognizer.listen(source)
                 my_text = recognizer.recognize_google(audio)
                 if len(my_text) > 0:
                     brain.brain(my_text)
-
-    
-if __name__ == '__main__':
-    main()
+'''
+main()

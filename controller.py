@@ -1,11 +1,13 @@
 # Python program to translate 
 # speech to text and text to speech 
 
+import subprocess
+
+import pyttsx3
 #from speech_recognition import *
 import speech_recognition as sr
-import pyttsx3
 from cv2 import cv2
-import subprocess
+
 
 def TakePicture():
     cam = cv2.VideoCapture(0)

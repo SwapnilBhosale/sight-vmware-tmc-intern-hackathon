@@ -3,6 +3,17 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+yolov3.weights
+.vscode/
+current.png
+object-detection-yolo-opencv/
+opencv_frame_0.jpg
+predictions.jpg
+vgg16_weights_tf_dim_ordering_tf_kernels.h5
+video_get.py
+video_show.py
+yolo.h5
+
 # C extensions
 *.so
 
