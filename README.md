@@ -69,7 +69,7 @@ Run following commands to install dependencies
 ```
 
 
-### Image detenction
+### Image Detection
 
 Run following commands to install dependencies
 
