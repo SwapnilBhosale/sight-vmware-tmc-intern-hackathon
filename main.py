@@ -8,8 +8,6 @@ import cv2
 import image_detection_yolo as yolo
 import speech_recognition as sr
 import text_to_speech
-from video_get import VideoGet
-from video_show import VideoShow
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--webcam', help="Y/N", default="Y")
