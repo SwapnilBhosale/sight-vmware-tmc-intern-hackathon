@@ -4,6 +4,31 @@
 Hackathon project part of VMWare intern 2020
 
 
+### Run the Project
+
+Run project with Webcam
+
+```
+1) brew install portaudio
+
+2) pip3 install -r requirements.txt
+
+3) python3 main.py
+
+```
+
+
+Run project with Video
+
+```
+1) brew install portaudio
+
+2) pip3 install -r requirements.txt
+
+3) python3 main.py --webcam=N
+
+```
+
 ### Speech to Text
 
 Run following commands to install dependencies
