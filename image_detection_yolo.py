@@ -154,6 +154,9 @@ def start_video(video_path):
     print("after load")
     while True:
         _, frame = cap.read()
+        t = int(time.time())
+        if t%10 == 0:
+            cv2.imwrite('current.png', frame)
         height, width, channels = frame.shape
         blob, outputs = detect_objects(frame, model, output_layers)
         boxes, confs, class_ids = get_box_dimensions(outputs, height, width)
