@@ -29,6 +29,7 @@ Key features include:
 - ***Image Capture and Captioning***: capture the image on camera with voice command trigger, and generate a descriptive sentence as voice output. 
 
 - ***Text Reader***: detect text present in front of camera and enable speaker to read the text for users.
+  This module uses [Pytesseract](https://pypi.org/project/pytesseract/) for character detection and recognition.
 
 ## Prerequisites 
 
@@ -88,8 +89,11 @@ Run following commands to install dependencies
 
 ## Results
 
-![Object Detection](https://github.com/SwapnilBhosale/sight-vmware-tmc-intern-hackathon/blob/master/demo_data/object_detection.png?raw=true)
+- ***Object Detection and Recognition***: 
+![Object Detection and Recognition](https://github.com/SwapnilBhosale/sight-vmware-tmc-intern-hackathon/blob/master/demo_data/object_detection.png?raw=true)
 
+- ***Text Reader***: 
+![Text Reader](https://github.com/SwapnilBhosale/sight-vmware-tmc-intern-hackathon/blob/master/demo_data/Text_recognition.png?raw=true)
 
 ## FutureWork
 
