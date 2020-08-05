@@ -134,9 +134,9 @@ def webcam_detect():
         blob, outputs = detect_objects(frame, model, output_layers)
         #print("** outputs: ",outputs)
         boxes, confs, class_ids = get_box_dimensions(outputs, height, width)
-        if len(confs) > 0:
-            print("*** confs:{} {} ".format(max(confs), classes[class_ids[confs.index(max(confs))]]))
-            print("***8 class_ids:  ",class_ids)
+        #if len(confs) > 0:
+            #print("*** confs:{} {} ".format(max(confs), classes[class_ids[confs.index(max(confs))]]))
+            #print("***8 class_ids:  ",class_ids)
         #print_labels(classes,class_ids)
         draw_labels(boxes, confs, colors, class_ids, classes, frame)
         #esc key is exit key

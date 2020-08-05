@@ -52,18 +52,20 @@ def main():
     subprocess.Popen(["python3", "image_detection_yolo.py"], close_fds=True)
     #subprocess.Popen(["python3", "image_detection_yolo.py", "--webcam=False", "--video_path=/tmp/video.mp4"])
     while True:
-        with sr.Microphone() as source:
-                # wait for a second to let the recognizer
-                # adjust the energy threshold based on
-                # the surrounding noise level
-                recognizer.adjust_for_ambient_noise(source, duration=0.2)
-                print("before listern")
-                audio = recognizer.listen(source)
-                my_text = recognizer.recognize_google(audio)
-                if len(my_text) > 0:
-                    print("** text: ",my_text)
-                    brain.brain(my_text,  model, classes, colors, output_layers)
-    
+        try:
+            with sr.Microphone() as source:
+                    # wait for a second to let the recognizer
+                    # adjust the energy threshold based on
+                    # the surrounding noise level
+                    recognizer.adjust_for_ambient_noise(source, duration=0.2)
+                    print("before listern")
+                    audio = recognizer.listen(source)
+                    my_text = recognizer.recognize_google(audio)
+                    if len(my_text) > 0:
+                        print("** text: ",my_text)
+                        brain.brain(my_text,  model, classes, colors, output_layers)
+        except Exception as e:
+            print("Error: ",e)
 
     '''while 1:
         # get the trigger using text to speech
