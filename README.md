@@ -87,3 +87,11 @@ Run following commands to install dependencies
 ## Results
 
 ![Object Detection](https://github.com/SwapnilBhosale/sight-vmware-tmc-intern-hackathon/blob/master/demo_data/object_detection.png?raw=true)
+
+
+## FutureWork
+
+- We use laptop camera as a image source in this project, and we plan to integrate with a wearable device camera, such as camera glass, for image input.
+- Integrate with a micro processor such as a Raspberry Pi to make the device portable. 
+- Develop additional features that would accomondate needs from visually impared people.
+
