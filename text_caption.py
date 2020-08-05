@@ -19,6 +19,5 @@ def getImageCaption(image_url):
     return ans['output']['captions'][0]['caption']
 
 
-textCaption = getImageCaption('/Users/hariharakris/Downloads/surf.jpg')
-
-print(textCaption)
+if __name__ == "__main__":
+    print(getImageCaption('surf.jpg'))
