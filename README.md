@@ -45,7 +45,9 @@ Run project with Webcam
 
 2) pip3 install -r requirements.txt
 
-3) python3 main.py
+3) wget https://pjreddie.com/media/files/yolov3.weights
+
+4) python3 main.py
 
 ```
 
@@ -57,7 +59,9 @@ Run project with Video
 
 2) pip3 install -r requirements.txt
 
-3) python3 main.py --webcam=N
+3) wget https://pjreddie.com/media/files/yolov3.weights
+
+4) python3 main.py --webcam=N
 
 ```
 
