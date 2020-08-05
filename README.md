@@ -23,6 +23,8 @@ This is a project aims in helping visually impared users **seeing** the world.
 Key features include:
 
 - ***Object Detection and Recognition***: the integrated speaker can speak what's in front of the camera via voice commands.
+  
+  This module uses [Speech Recognition](https://pypi.org/project/SpeechRecognition) for speech recognition, [YOLO](https://pjreddie.com/darknet/yolo) for object detection and recognition, and [pyttsx3](https://pypi.org/project/pyttsx3) for text-to-speech conversion.
 
 - ***Image Capture and Captioning***: capture the image on camera with voice command trigger, and generate a descriptive sentence as voice output. 
 
