@@ -55,7 +55,7 @@ def main():
     if args.webcam == "Y":
         subprocess.Popen(["python3", "image_detection_yolo.py"], close_fds=True)
     else:
-        subprocess.Popen(["python3", "image_detection_yolo.py", "--webcam=N", "--play_video=Y", "--video_path=video.mp4"])
+        subprocess.Popen(["python3", "image_detection_yolo.py", "--webcam=N", "--play_video=Y", "--video_path=test3.mp4"])
     while True:
         try:
             with sr.Microphone() as source:
