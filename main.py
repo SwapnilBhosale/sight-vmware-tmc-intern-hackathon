@@ -63,7 +63,7 @@ def main():
                     # adjust the energy threshold based on
                     # the surrounding noise level
                     recognizer.adjust_for_ambient_noise(source, duration=0.2)
-                    print("before listern")
+                    print("before listen")
                     audio = recognizer.listen(source)
                     my_text = recognizer.recognize_google(audio)
                     if len(my_text) > 0:
