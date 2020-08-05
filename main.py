@@ -1,3 +1,4 @@
+import argparse
 import subprocess
 import time
 from threading import Lock, Thread
@@ -10,6 +11,9 @@ import text_to_speech
 from video_get import VideoGet
 from video_show import VideoShow
 
+parser = argparse.ArgumentParser()
+parser.add_argument('--webcam', help="Y/N", default="Y")
+args = parser.parse_args()
 
 class camThread(Thread):
     def __init__(self, previewName, camID):
@@ -49,8 +53,11 @@ def main():
     #model, classes, colors, output_layers = yolo.load_yolo()
     #thread1 = camThread("Camera 1", 0)
     #thread1.start()
-    subprocess.Popen(["python3", "image_detection_yolo.py"], close_fds=True)
-    #subprocess.Popen(["python3", "image_detection_yolo.py", "--webcam=False", "--video_path=/tmp/video.mp4"])
+    print("*** args: ",args)
+    if args.webcam == "Y":
+        subprocess.Popen(["python3", "image_detection_yolo.py"], close_fds=True)
+    else:
+        subprocess.Popen(["python3", "image_detection_yolo.py", "--webcam=N", "--play_video=Y", "--video_path=video.mp4"])
     while True:
         try:
             with sr.Microphone() as source:

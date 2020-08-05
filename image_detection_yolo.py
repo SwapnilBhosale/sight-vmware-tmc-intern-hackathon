@@ -5,9 +5,9 @@ import cv2
 import numpy as np
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--webcam', help="True/False", default=True)
-parser.add_argument('--play_video', help="Tue/False", default=False)
-parser.add_argument('--image', help="Tue/False", default=False)
+parser.add_argument('--webcam', help="Y/N", default="Y")
+parser.add_argument('--play_video', help="Y/N", default="N")
+parser.add_argument('--image', help="Y/N", default="N")
 parser.add_argument('--video_path', help="Path of video file", default="")
 parser.add_argument(
     '--image_path', help="Path of image to detect objects", default="")
@@ -147,7 +147,7 @@ def webcam_detect():
 
 
 def start_video(video_path):
-    print("before load")
+    print(" video before load")
     model, classes, colors, output_layers = load_yolo()
     
     cap = cv2.VideoCapture(video_path)
@@ -169,16 +169,17 @@ if __name__ == '__main__':
     webcam = args.webcam
     video_play = args.play_video
     image = args.image
-    if webcam:
+    print("Args: ",args)
+    if webcam == "Y":
         if args.verbose:
             print('---- Starting Web Cam object detection ----')
         webcam_detect()
-    if video_play:
+    if video_play == "Y":
         video_path = args.video_path
         if args.verbose:
             print('Opening ' + video_path + " .... ")
         start_video(video_path)
-    if image:
+    if image == "Y":
         image_path = args.image_path
         if args.verbose:
             print("Opening " + image_path + " .... ")
