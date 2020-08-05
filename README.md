@@ -3,8 +3,32 @@
 
 Hackathon project part of VMWare intern 2020
 
+# Contents
 
-### Run the Project
+[***Introduction***](https://github.com/SwapnilBhosale/sight-vmware-tmc-intern-hackathon#Introduction)
+
+[***Prerequisites***](https://github.com/SwapnilBhosale/sight-vmware-tmc-intern-hackathon#Prerequisites)
+
+[***Instructions***](https://github.com/SwapnilBhosale/sight-vmware-tmc-intern-hackathon#Instructions)
+
+[***Results And Demo***](https://github.com/SwapnilBhosale/sight-vmware-tmc-intern-hackathon#Results)
+
+[***Future Work***](https://github.com/SwapnilBhosale/sight-vmware-tmc-intern-hackathon#FutureWork)
+
+
+# Introduction
+
+This is a project aims in helping visually impared users **seeing** the world.
+
+Key features include:
+
+- Object Detection and Recognition: the integrated speaker can speak what's in front of the camera via voice commands.
+
+- Image Capture and Captioning: capture the image on camera with voice command trigger, and generate a descriptive sentence as voice output. 
+
+- Text Reader: detect text present in front of camera and enable speaker to read the text for users.
+
+# Prerequisites 
 
 Run project with Webcam
 
@@ -51,5 +75,7 @@ Run following commands to install dependencies
 1) wget https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo.h5
 
 2) python3 image_detection_yolo.py
+
+3) brew install tesseract
 
 ```

@@ -6,6 +6,7 @@ import cv2
 import image_detection_yolo as yolo
 import text_to_speech
 from PIL import Image, ImageDraw, ImageFont
+from text_read import get_string_from_img
 
 sentences = [
     "There is a {} in front of you",
@@ -23,6 +24,12 @@ def brain(data, model, classes, colors, output_layers):
     elif data and ("describe" in data or "descibe surrounding" in data):
         #Here let's integrate the desctibe call
         pass
+    elif data and ("read it" in data or "please read" in data):
+        res = get_string_from_img("./current.png")
+        if not res:
+            text_to_speech.SpeakText("Sorry there is no text to read")
+        else:
+            text_to_speech.SpeakText(res)
     else:
         text_to_speech.SpeakText("Sorry! I don't understand")
 
