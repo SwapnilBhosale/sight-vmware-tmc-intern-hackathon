@@ -24,11 +24,17 @@ Key features include:
 
 - ***Object Detection and Recognition***: the integrated speaker can speak what's in front of the camera via voice commands.
   
-  This module uses [Speech Recognition](https://pypi.org/project/SpeechRecognition) for speech recognition, [YOLO](https://pjreddie.com/darknet/yolo) for object detection and recognition, and [pyttsx3](https://pypi.org/project/pyttsx3) for text-to-speech conversion.
+  This module uses [YOLO](https://pjreddie.com/darknet/yolo) for object detection and recognition.
 
 - ***Image Capture and Captioning***: capture the image on camera with voice command trigger, and generate a descriptive sentence as voice output. 
-
+  
+  This module uses [DeepAI](https://deepai.org)
+  
 - ***Text Reader***: detect text present in front of camera and enable speaker to read the text for users.
+
+  This module uses [Pytesseract](https://pypi.org/project/pytesseract/) for character detection and recognition.
+  
+The project uses [Speech Recognition](https://pypi.org/project/SpeechRecognition) for speech recognition and [pyttsx3](https://pypi.org/project/pyttsx3) for text-to-speech conversion.
 
 ## Prerequisites 
 
@@ -39,7 +45,9 @@ Run project with Webcam
 
 2) pip3 install -r requirements.txt
 
-3) python3 main.py
+3) wget https://pjreddie.com/media/files/yolov3.weights
+
+4) python3 main.py
 
 ```
 
@@ -51,7 +59,9 @@ Run project with Video
 
 2) pip3 install -r requirements.txt
 
-3) python3 main.py --webcam=N
+3) wget https://pjreddie.com/media/files/yolov3.weights
+
+4) python3 main.py --webcam=N
 
 ```
 
@@ -84,12 +94,24 @@ Run following commands to install dependencies
 
 ## Instructions
 
-- ***Object Detection and Recognition***: Run `main.py` and wait for modules to load. Provide the flag `--webcam N` if you wish to see the demo with a preloaded video for object detection. Once loaded, it will prompt user for voice input. Ask with microphone `What do you see` or `what is this`, then wait for speaker module to generate the voice and you should be able to hear the output within a few seconds.
+Run `main.py` and wait for modules to load. Provide the flag `--webcam N` if you wish to see the demo with a preloaded video for object detection. Once loaded, it will prompt user for voice input.
+
+- ***Object Detection and Recognition***: Ask with microphone `What do you see` or `what is this`.
+
+- ***Text Reader***: Ask with microphone `Read it` or `Please read`.
+
+- ***Image Capture and Captioning***: Ask with microphone `Describe it` or `Describe surrounding`.
 
 ## Results
 
-![Object Detection](https://github.com/SwapnilBhosale/sight-vmware-tmc-intern-hackathon/blob/master/demo_data/object_detection.png?raw=true)
+- ***Object Detection and Recognition***: 
+![Object Detection and Recognition](https://github.com/SwapnilBhosale/sight-vmware-tmc-intern-hackathon/blob/master/demo_data/object_detection.png?raw=true)
 
+- ***Image Capture and Captioning***: 
+![Image Capture and Captioning](https://github.com/SwapnilBhosale/sight-vmware-tmc-intern-hackathon/blob/master/demo_data/Image_captioning.png?raw=true)
+
+- ***Text Reader***: 
+![Text Reader](https://github.com/SwapnilBhosale/sight-vmware-tmc-intern-hackathon/blob/master/demo_data/Text_recognition.png?raw=true)
 
 ## FutureWork
 

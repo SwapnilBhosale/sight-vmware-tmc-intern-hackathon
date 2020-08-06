@@ -57,7 +57,7 @@ def main():
         subprocess.Popen(["python3", "image_detection_yolo.py"], close_fds=True)
     else:
         subprocess.Popen(["python3", "image_detection_yolo.py", "--webcam=N", "--play_video=Y", "--video_path=test3.mp4"])
-    time.sleep(2)
+    time.sleep(1)
     text_to_speech.SpeakText("I am vision. I am listening, please give commands.")
     while True:
         try:
