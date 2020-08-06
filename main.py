@@ -29,6 +29,7 @@ def camPreview(previewName, camID):
         rval, frame = cam.read()
     else:
         rval = False
+    
 
     while rval:
 
@@ -47,7 +48,7 @@ def main():
 
     recognizer = sr.Recognizer() 
     model, classes, colors, output_layers = yolo.load_yolo() 
-    time.sleep(2)
+    
     #model, classes, colors, output_layers = yolo.load_yolo()
     #thread1 = camThread("Camera 1", 0)
     #thread1.start()
@@ -56,6 +57,8 @@ def main():
         subprocess.Popen(["python3", "image_detection_yolo.py"], close_fds=True)
     else:
         subprocess.Popen(["python3", "image_detection_yolo.py", "--webcam=N", "--play_video=Y", "--video_path=test3.mp4"])
+    time.sleep(2)
+    text_to_speech.SpeakText("I am vision. I am listening, please give commands.")
     while True:
         try:
             with sr.Microphone() as source:
@@ -63,7 +66,7 @@ def main():
                     # adjust the energy threshold based on
                     # the surrounding noise level
                     recognizer.adjust_for_ambient_noise(source, duration=0.2)
-                    print("before listern")
+                    print("Listening .....")
                     audio = recognizer.listen(source)
                     my_text = recognizer.recognize_google(audio)
                     if len(my_text) > 0:

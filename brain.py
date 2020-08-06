@@ -46,5 +46,10 @@ def image_process(frame, model, classes, colors, output_layers):
     print("***8 class_ids:  ",class_ids)
     #print_labels(classes,class_ids)
 
+    objs = []
+    for id in range(len(confs)):
+        objs.append(classes[class_ids[id]])
     i = randrange(0, len(sentences))
-    return sentences[i].format(classes[class_ids[confs.index(max(confs))]])
+    if len(objs) > 1:
+        objs.insert(-2, "and")
+    return sentences[i].format(" ".join(objs))
